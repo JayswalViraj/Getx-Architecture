@@ -3,40 +3,39 @@ name: Flutter CI/CD
 on:
   push:
     branches:
-      - main  # Trigger on push to the main branch
+      - main
   pull_request:
     branches:
-      - main  # Trigger on pull requests to the main branch
+      - main
 
 jobs:
   build:
-    name: Build and Test Flutter App
     runs-on: ubuntu-latest
 
     steps:
-    # Step 1: Checkout the code
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # Step 2: Set up Flutter
+    - name: Remove Cached Flutter Version
+      run: rm -rf $HOME/.flutter
+
     - name: Set up Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.22.2'
+        flutter-version: '3.13.0'
 
-    # Step 3: Install dependencies
+    - name: Verify Flutter Installation
+      run: flutter --version
+
     - name: Install dependencies
       run: flutter pub get
 
-    # Step 4: Run tests
     - name: Run Flutter tests
       run: flutter test
 
-    # Step 5: Build Android APK
     - name: Build APK
       run: flutter build apk --release
 
-    # Step 6: Upload APK as an artifact
     - name: Upload APK
       uses: actions/upload-artifact@v3
       with:
