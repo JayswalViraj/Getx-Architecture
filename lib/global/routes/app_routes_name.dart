@@ -1,7 +1,8 @@
 abstract class AppRoutesName {
   //Initial Routes
-  static const String initialPage = "/initial_page";
+  static  String initialPage = "/initial_page";
 
   //Pages
   static const String blankPage = "/blank_page";
+  static const String loginPage = "/login_page";
 }

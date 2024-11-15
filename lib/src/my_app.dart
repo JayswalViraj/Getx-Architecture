@@ -11,12 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-            debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutesName.blankPage,
+      debugShowCheckedModeBanner: false,
+      initialRoute: AppRoutesName.initialPage,
       getPages: AppRoutes.appRoutes(),
       title: 'Flutter Demo',
       theme: ThemeData(
-    colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
     );
